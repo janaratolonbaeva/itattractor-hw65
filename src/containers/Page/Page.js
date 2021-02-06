@@ -13,8 +13,13 @@ const Page = ({match}) => {
 			if (id) {
 				url = id + url;
 			}
-			const pagesResponse = await axiosOrders.get(url);
-			setPages(pagesResponse.data);
+
+			try {
+				const pagesResponse = await axiosOrders.get(url);
+				setPages(pagesResponse.data);
+			} catch (e) {
+				console.log(e);
+			}
 		};
 
 		fetchData().then(console.error)

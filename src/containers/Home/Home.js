@@ -7,8 +7,13 @@ const Home = () => {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const pagesResponse = await axiosOrders.get('home.json');
-			setHome(pagesResponse.data);
+			try {
+				const pagesResponse = await axiosOrders.get('home.json');
+				setHome(pagesResponse.data);
+			} catch (e) {
+				console.log(e);
+			}
+
 		};
 
 		fetchData().then(console.error)
